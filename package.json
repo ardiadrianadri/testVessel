@@ -1,0 +1,25 @@
+{
+  "name": "testVessel",
+  "version": "0.0.1",
+  "description": "Test to join to Commodity Vectors",
+  "main": "index.html",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "grunt testApp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ardiadrianadri/testVessel"
+  },
+  "keywords": [
+    "Commodity",
+    "Vectors"
+  ],
+  "author": "everis (http://www.everis.es/)",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/ardiadrianadri/testVessel/issues"
+  }
+}
