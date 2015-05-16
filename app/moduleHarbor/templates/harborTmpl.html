@@ -1,0 +1,49 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">{{"SEARCH_HARBOR"|translate}}</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#" ng-click="goOut()"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+<div class="well">
+    <div class="row">
+      <div class="col-md-12">
+        <label>{{"HARBOR_NAME"|translate}}</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-10">
+        <input type="text" class="form-control" ng-model="hardBoardName"/>
+        <div ng-if="validate">
+          <label class="label label-danger">{{validateError|translate}}</label>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <button class="btn btn-default" ng-click="search()">{{"ONLY_SEARCH"|translate}}</button>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <table ng-table="tableParams" class="table table-bordered">
+        <tr ng-repeat="harbor in $data">
+          <td data-title="name">{{harbor.name}}</td>
+          <td data-title="latitude">{{harbor.point.latitude}}</td>
+          <td data-title="longitude">{{harbor.point.longitude}}</td>
+          <td data-title=""><button class="btn btn-primary" ng-click="select(harbor)">{{"ONLY_SELECT"|translate}}</button></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 personalButton">
+      <button class="btn btn-default" ng-click="goOut()">{{"ONLY_CLOSE"|translate}}</button>
+    </div>
+  </div>

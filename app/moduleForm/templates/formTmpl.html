@@ -1,0 +1,118 @@
+<div class="well well-lg">
+	<div class="row">
+		<div class="col-md-3">
+			<label>{{"NAME"|translate}}</label>
+		</div>
+		<div class="col-md-3">
+			<label>{{"LATITUDE"|translate}}</label>
+		</div>
+		<div class="col-md-3">
+			<label>{{"LONGITUDE"|translate}}</label>
+		</div>
+		<div class="col-md-3">
+			<label>{{"RADIUS" | translate}}&nbsp;(Km)</label>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-3">
+			<input type="text" class="form-control"/>
+		</div>
+		<div class="col-md-3">
+			<input type="text" class="form-control" ng-model="point.latitude"/>
+		</div>
+		<div class="col-md-3">
+			<input type="text" class="form-control" ng-model="point.longitude"/>
+		</div>
+		<div class="col-md-2">
+			<input type="text" class="form-control"/>
+		</div>
+		<div class="col-md-1">
+			<button tooltip='{{"HARBORS"|translate}}' tooltip-placement="bottom" ng-click="harborModal()">
+				<img src="app/moduleForm/img/glyphicons-244-anchor.png"/>
+			</button>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12" ng-click="showDetail=!showDetail">
+			<a href="#" class="linkForm">
+				<span>{{"SEARCH_DETAIL"|translate}}</span>&nbsp;
+				<span ng-hide="showDetail" class="glyphicon glyphicon-hand-down"></span>
+				<span ng-show="showDetail" class="glyphicon glyphicon-hand-left"></span>
+			</a>
+		</div>
+	</div>
+	<div class="detail-form" ng-hide="showDetail">
+		<div class="row">
+			<div class="col-md-1">
+				<label>{{"WIDTH"|translate}}:</label>
+			</div>
+			<div class="col-md-3">
+				<input type="text" class="form-control"/>
+			</div>
+			<div class="col-md-3">
+				<select class="form-control" ng-model="selectWidth" ng-change="compareWidth()">
+					<option value="gte">&gt;=</option>
+					<option value="gt">&gt;</option>
+					<option value="lt">&lt;</option>
+					<option value="lte">&lt;=</option>
+					<option value="btw">{{"BETWEEN"|translate}}</option>
+				</select>
+			</div>
+			<div class="col-md-3">
+				<input type="text" class="form-control" ng-show="showBetweenDetails.width"/>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-1">
+				<label>{{"LENGTH"|translate}}:</label>
+			</div>
+			<div class="col-md-3">
+				<input type="text" class="form-control"/>
+			</div>
+			<div class="col-md-3">
+				<select class="form-control" ng-model="selectLength" ng-change="compareLength()">
+					<option value="gte">&gt;=</option>
+					<option value="gt">&gt;</option>
+					<option value="lt">&lt;</option>
+					<option value="lte">&lt;=</option>
+					<option value="btw">{{"BETWEEN"|translate}}</option>
+				</select>
+			</div>
+			<div class="col-md-3">
+				<input type="text" class="form-control" ng-show="showBetweenDetails.length"/>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-1">
+				<label>{{"DRAFT"|translate}}:</label>
+			</div>
+			<div class="col-md-3">
+				<input type="text" class="form-control"/>
+			</div>
+			<div class="col-md-3">
+				<select class="form-control" ng-model="selectDraft" ng-change="compareDraft()">
+					<option value="gte">&gt;=</option>
+					<option value="gt">&gt;</option>
+					<option value="lt">&lt;</option>
+					<option value="lte">&lt;=</option>
+					<option value="btw">{{"BETWEEN"|translate}}</option>
+				</select>
+			</div>
+			<div class="col-md-3">
+				<input type="text" class="form-control" ng-show="showBetweenDetails.draft"/>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			&nbsp;
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-2 col-md-offset-10 personalButton">
+			<button class="btn btn-default">{{"CLEAN"|translate}}</button> &nbsp;
+			<button class="btn btn-primary">{{"SEARCH"|translate}}</button>
+		</div>
+	</div>
+</div>
+<div ui-view></div>

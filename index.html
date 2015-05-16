@@ -1,0 +1,35 @@
+<!doctype html>
+<html xmlns:ng="http://angularjs.org" ng-app="Router">
+	<head>
+		<meta charset="UTF-8">
+		<title>Geoposition Vessels</title>
+
+		<!--CSS files -->
+		<link rel="stylesheet" type="text/css" href="libs/bootstrap/css/bootstrap-theme.min.css"/>
+		<link rel="stylesheet" type="text/css" href="libs/bootstrap/css/bootstrap.min.css"/>
+		<link rel="stylesheet" type="text/css" href="libs/ng-table/ng-table.min.css"/>
+		<link rel="stylesheet" type="text/css" href="app/moduleHeader/css/header.css"/>
+		<link rel="stylesheet" type="text/css" href="app/moduleForm/css/form.css"/>
+
+		<!--Library files-->
+		<script type="text/javascript" src="libs/jquery/jquery-1.11.3.min.js"></script>
+		<script type="text/javascript" src="libs/angular/angular.min.js"></script>
+		<script type="text/javascript" src="libs/angularTranslate/angular-translate.min.js"></script>
+		<script type="text/javascript" src="libs/angularTranslate/angular-translate-loader-partial.min.js"></script>
+		<script type="text/javascript" src="libs/bootstrap/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="libs/ui-bootstrap/ui-bootstrap-tpls-0.13.0.min.js"></script>
+		<script type="text/javascript" src="libs/uiRouter/angular-ui-router.min.js"></script>
+		<script type="text/javascript" src="libs/ng-table/ng-table.min.js"></script>
+
+		<!--My own libraries-->
+		<script type="text/javascript" src="app/router/router.js"></script>
+		<script type="text/javascript" src="app/moduleForm/controllers/FormCtrl.js"></script>
+		<script type="text/javascript" src="app/moduleHeader/controllers/HeaderCrtl.js"></script>
+		<script type="text/javascript" src="app/moduleHarbor/controllers/HarborCtrl.js"></script>
+		<script type="text/javascript" src="app/moduleHarbor/services/HarborService.js"></script>
+		<script type="text/javascript" src="app/resource/generalConfig.js"></script>
+	</head>
+	<body>
+       <div ui-view></div>
+	</body>
+</html>
