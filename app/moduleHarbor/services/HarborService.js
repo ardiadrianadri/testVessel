@@ -22,6 +22,8 @@ angular.module('HarborApp').factory('HarborService',['$http','$q','$injector','p
 				params.total(0);
 				$defer.resolve([]);
 			}
+
+			return $defer.promise;
 		};
 
 

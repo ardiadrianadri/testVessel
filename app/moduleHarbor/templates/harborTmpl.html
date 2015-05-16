@@ -31,7 +31,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12" ng-if="gotData">
       <table ng-table="tableParams" class="table table-bordered">
         <tr ng-repeat="harbor in $data">
           <td data-title="name">{{harbor.name}}</td>
@@ -40,6 +40,9 @@
           <td data-title=""><button class="btn btn-primary" ng-click="select(harbor)">{{"ONLY_SELECT"|translate}}</button></td>
         </tr>
       </table>
+    </div>
+    <div class="col-md-12 loadingGif" ng-if="loading">
+        <img src="app/img/loading.gif"/>
     </div>
   </div>
   <div class="row">

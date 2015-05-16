@@ -1,4 +1,4 @@
-angular.module("FormApp",[]).controller("FormCtrl",['$scope','$state',function($scope,$state){
+angular.module("FormApp",[]).controller("FormCtrl",['$scope','$state','$stateParams','$rootScope',function($scope,$state,$stateParams,$rootScope){
 	$scope.showDetail=true;
 	$scope.showBetweenDetails = {
 		width:false,
@@ -34,12 +34,12 @@ angular.module("FormApp",[]).controller("FormCtrl",['$scope','$state',function($
 		}
 	}
 
-	$scope.setPoint=function(point){
-		$scope.point=point;
-	}
-
 	$scope.harborModal=function(){
 		$state.go("header.form.harbor");
 	}
+
+	$rootScope.$on('POINT_SELECTED',function(evt,point){
+		$scope.point=point;
+	});
 
 }]);

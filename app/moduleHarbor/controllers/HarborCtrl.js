@@ -1,5 +1,5 @@
-angular.module('HarborApp',[]).controller('HarborCtrl',['$scope','$state','HarborService','ngTableParams','$rootScope','$translate',
-	function($scope,$state,HarborService,ngTableParams,$rootScope,$translate){
+angular.module('HarborApp',[]).controller('HarborCtrl',['$scope','HarborService','ngTableParams','$rootScope','$translate',
+	function($scope,HarborService,ngTableParams,$rootScope,$translate){
 	
 	$scope.data=[];
 	$scope.service = new HarborService();
@@ -7,10 +7,12 @@ angular.module('HarborApp',[]).controller('HarborCtrl',['$scope','$state','Harbo
 	$scope.name="Name";
 	$scope.latitude="latitude";
 	$scope.longitude="longitude";
+	$scope.gotData=true;
+	$scope.loading=false;
 
 
 	$scope.goOut = function(){
-		$state.go('^');
+		$scope.$close('^');
 	};
 
 	$scope.search = function (){
@@ -19,8 +21,10 @@ angular.module('HarborApp',[]).controller('HarborCtrl',['$scope','$state','Harbo
 			$scope.validate=true;
 		} else {
 			$scope.validate=false;
+			$scope.gotData=false;
+			$scope.loading=true;
+			$scope.tableParams.reload();
 		}
-		$scope.tableParams.reload();
 	};
 
 
@@ -30,7 +34,13 @@ angular.module('HarborApp',[]).controller('HarborCtrl',['$scope','$state','Harbo
 	},{
 		total: $scope.data.length,
 		getData: function ($defer,params){
-			$scope.service.getHarborData($scope.hardBoardName,$defer,params);
+			$scope.service.getHarborData($scope.hardBoardName,$defer,params).then(function(){
+				$scope.gotData=true;
+				$scope.loading=false;
+			},function(){
+				//TODO Aqui habra que poner la logica de fallo cuando tengamos la ventana de mensajes
+			});
+
 		}
 	});
 
@@ -43,5 +53,10 @@ angular.module('HarborApp',[]).controller('HarborCtrl',['$scope','$state','Harbo
 			//TODO Aqui hay que poner el tratamiento de errores cuando tengamos la modal de avisos
 		})
 	});
+
+	$scope.select=function(harbor){
+		$rootScope.$emit('POINT_SELECTED',harbor.point);
+		$scope.$close('^');
+	}
 
 }]);
