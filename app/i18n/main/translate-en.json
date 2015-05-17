@@ -23,5 +23,8 @@
 	"ONLY_SEARCH":"Search",
 	"ONLY_SELECT":"Select",
 	"ONLY_CLOSE":"Close",
-	"ONLY_NAME":"Name"
+	"ONLY_NAME":"Name",
+	"POINT_NULL":"The latitude and longitude must have a valid value to search by area",
+	"ONLY_NUMBERS":"This field only accept numbers",
+	"ONLY_NUMBERS_POSITIVE":"This field only accept positive numbers"
 }

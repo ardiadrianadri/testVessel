@@ -1,12 +1,12 @@
-angular.module('HarborApp',[]).controller('HarborCtrl',['$scope','HarborService','ngTableParams','$rootScope','$translate',
-	function($scope,HarborService,ngTableParams,$rootScope,$translate){
+angular.module('HarborApp',[]).controller('HarborCtrl',['$scope','HarborService','ngTableParams','$rootScope','$translate','$filter',
+	function($scope,HarborService,ngTableParams,$rootScope,$translate,$filter){
 	
 	$scope.data=[];
 	$scope.service = new HarborService();
 	$scope.validate=false;
-	$scope.name="Name";
-	$scope.latitude="latitude";
-	$scope.longitude="longitude";
+	$scope.name=$filter("translate")("ONLY_NAME");
+	$scope.latitude=$filter("translate")("LATITUDE");
+	$scope.longitude=$filter("translate")("LONGITUDE");
 	$scope.gotData=true;
 	$scope.loading=false;
 
@@ -42,16 +42,6 @@ angular.module('HarborApp',[]).controller('HarborCtrl',['$scope','HarborService'
 			});
 
 		}
-	});
-
-	$rootScope.$on('$translateChangeSuccess',function(){
-		$translate(['ONLY_NAME','LATITUDE','LONGITUDE']).then(function(trans){
-			$scope.name=trans.ONLY_NAME;
-			$scope.latitude=trans.LATITUDE;
-			$scope.longitude=trans.LONGITUDE
-		},function(error){
-			//TODO Aqui hay que poner el tratamiento de errores cuando tengamos la modal de avisos
-		})
 	});
 
 	$scope.select=function(harbor){

@@ -15,16 +15,28 @@
 	</div>
 	<div class="row">
 		<div class="col-md-3">
-			<input type="text" class="form-control"/>
+			<input type="text" class="form-control" ng-blur="validateName()" ng-model="vesselForm.name"/>
+			<div ng-if="validationNameError">
+				<label class="label label-danger">{{validationNameMessage|translate}}</label>
+			</div>
 		</div>
 		<div class="col-md-3">
-			<input type="text" class="form-control" ng-model="point.latitude"/>
+			<input type="text" class="form-control" ng-blur="validateLatitude()" ng-model="vesselForm.area.point.latitude"/>
+			<div ng-if="validationLatitudeError">
+				<label class="label label-danger">{{validationLatitudeMessage|translate}}</label>
+			</div>
 		</div>
 		<div class="col-md-3">
-			<input type="text" class="form-control" ng-model="point.longitude"/>
+			<input type="text" class="form-control" ng-blur="validateLongitude()" ng-model="vesselForm.area.point.longitude"/>
+			<div ng-if="validationLongitudeError">
+				<label class="label label-danger">{{validationLongitudeMessage|translate}}</label>
+			</div>
 		</div>
 		<div class="col-md-2">
-			<input type="text" class="form-control"/>
+			<input type="text" class="form-control" ng-blur="validateRadios()" ng-model="vesselForm.area.radius"/>
+			<div ng-if="validationRadiosError">
+				<label class="label label-danger">{{validationRadiosMessage|translate}}</label>
+			</div>
 		</div>
 		<div class="col-md-1">
 			<button tooltip='{{"HARBORS"|translate}}' tooltip-placement="bottom" ng-click="harborModal()">
@@ -47,10 +59,13 @@
 				<label>{{"WIDTH"|translate}}:</label>
 			</div>
 			<div class="col-md-3">
-				<input type="text" class="form-control"/>
+				<input type="text" class="form-control" ng-blur="validateDetails({'name':'width','field':'1'})" ng-model="vesselForm.width.field1"/>
+				<div ng-if="validationWidth1Error">
+					<label class="label label-danger">{{validationWidth1Message|translate}}</label>
+				</div>
 			</div>
 			<div class="col-md-3">
-				<select class="form-control" ng-model="selectWidth" ng-change="compareWidth()">
+				<select class="form-control" ng-model="vesselForm.width.operator" ng-change="compareWidth()">
 					<option value="gte">&gt;=</option>
 					<option value="gt">&gt;</option>
 					<option value="lt">&lt;</option>
@@ -59,7 +74,10 @@
 				</select>
 			</div>
 			<div class="col-md-3">
-				<input type="text" class="form-control" ng-show="showBetweenDetails.width"/>
+				<input type="text" class="form-control" ng-blur="validateDetails({'name':'width','field':'2'})" ng-model="vesselForm.width.field2" ng-show="showBetweenDetails.width"/>
+				<div ng-if="validationWidth2Error">
+					<label class="label label-danger">{{validationWidth2Message|translate}}</label>
+				</div>
 			</div>
 		</div>
 		<div class="row">
@@ -67,10 +85,13 @@
 				<label>{{"LENGTH"|translate}}:</label>
 			</div>
 			<div class="col-md-3">
-				<input type="text" class="form-control"/>
+				<input type="text" class="form-control" ng-blur="validateDetails({'name':'length','field':'1'})" ng-model="vesselForm.length.field1"/>
+				<div ng-if="validationLength1Error">
+					<label class="label label-danger">{{validationLength1Message|translate}}</label>
+				</div>
 			</div>
 			<div class="col-md-3">
-				<select class="form-control" ng-model="selectLength" ng-change="compareLength()">
+				<select class="form-control" ng-model="vesselForm.length.operator" ng-change="compareLength()">
 					<option value="gte">&gt;=</option>
 					<option value="gt">&gt;</option>
 					<option value="lt">&lt;</option>
@@ -79,7 +100,10 @@
 				</select>
 			</div>
 			<div class="col-md-3">
-				<input type="text" class="form-control" ng-show="showBetweenDetails.length"/>
+				<input type="text" class="form-control" ng-blur="validateDetails({'name':'length','field':'2'})" ng-model="vesselForm.length.field2" ng-show="showBetweenDetails.length"/>
+				<div ng-if="validationLength2Error">
+					<label class="label label-danger">{{validationLength2Message|translate}}</label>
+				</div>
 			</div>
 		</div>
 		<div class="row">
@@ -87,10 +111,13 @@
 				<label>{{"DRAFT"|translate}}:</label>
 			</div>
 			<div class="col-md-3">
-				<input type="text" class="form-control"/>
+				<input type="text" class="form-control" ng-blur="validateDetails({'name':'draft','field':'1'})" ng-model="vesselForm.draft.field1"/>
+				<div ng-if="validationDraft1Error">
+					<label class="label label-danger">{{validationDraft1Message|translate}}</label>
+				</div>
 			</div>
 			<div class="col-md-3">
-				<select class="form-control" ng-model="selectDraft" ng-change="compareDraft()">
+				<select class="form-control" ng-model="vesselForm.draft.operator" ng-change="compareDraft()">
 					<option value="gte">&gt;=</option>
 					<option value="gt">&gt;</option>
 					<option value="lt">&lt;</option>
@@ -99,7 +126,10 @@
 				</select>
 			</div>
 			<div class="col-md-3">
-				<input type="text" class="form-control" ng-show="showBetweenDetails.draft"/>
+				<input type="text" class="form-control" ng-blur="validateDetails({'name':'draft','field':'2'})" ng-model="vesselForm.draft.field2" ng-show="showBetweenDetails.draft"/>
+				<div ng-if="validationDraft2Error">
+					<label class="label label-danger">{{validationDraft2Message|translate}}</label>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -110,8 +140,8 @@
 	</div>
 	<div class="row">
 		<div class="col-md-2 col-md-offset-10 personalButton">
-			<button class="btn btn-default">{{"CLEAN"|translate}}</button> &nbsp;
-			<button class="btn btn-primary">{{"SEARCH"|translate}}</button>
+			<button class="btn btn-default" ng-click="clean()">{{"CLEAN"|translate}}</button> &nbsp;
+			<button class="btn" ng-class="{'btn-info':disableSearch,'btn-primary':!disableSearch}" ng-click="launchSearch()">{{"SEARCH"|translate}}</button>
 		</div>
 	</div>
 </div>
