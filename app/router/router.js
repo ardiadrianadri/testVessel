@@ -1,4 +1,4 @@
-var router=angular.module("Router",["ui.router","ui.bootstrap","ngTable","GeneralConfig","ModuleHeader","FormApp","HarborApp"]);
+var router=angular.module("Router",["ui.router","ui.bootstrap","ngTable","GeneralConfig","ModuleHeader","FormApp","HarborApp","MessageApp"]);
 
 router.config(['$stateProvider','$urlRouterProvider',function($stateProvider,$urlRouterProvider){
 
@@ -21,13 +21,21 @@ router.config(['$stateProvider','$urlRouterProvider',function($stateProvider,$ur
 				controller:'HarborCtrl',
 				size:'lg'
 			}).result.then(function(result){
-				if ((!result) || (result === "")){
-					$state.go(result);
-				} else {
-					$state.go(result)
-				}
+				$state.go(result)
 			},function(error){
-				//TODO Aqui ira el tratamiento de error cuando ponga la modal de mensajes
+				$state.go("header.form.message",{code:error});
+			});
+		}]
+	}).state('header.form.message',{
+		url:'/msg/:code',
+		onEnter:['$stateParams','$state','$modal',function($stateParams,$state,$modal){
+			$modal.open({
+				templateUrl:"app/moduleUtils/templates/messageTmpl.html",
+				controller:"MessageCtrl"
+			}).result.then(function(result){
+				$state.go(result);
+			},function(error){
+				$state.go("header.form.message",{code:error});
 			});
 		}]
 	});

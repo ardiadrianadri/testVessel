@@ -26,5 +26,7 @@
 	"ONLY_NAME":"Name",
 	"POINT_NULL":"The latitude and longitude must have a valid value to search by area",
 	"ONLY_NUMBERS":"This field only accept numbers",
-	"ONLY_NUMBERS_POSITIVE":"This field only accept positive numbers"
+	"ONLY_NUMBERS_POSITIVE":"This field only accept positive numbers",
+	"10001":"At least, the name of the vessel or the data of the area (latitude, longitude and radius) have to be filled to do a search",
+	"10002":"At least, there is a validation error that need to be solved"
 }

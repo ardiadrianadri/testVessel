@@ -26,5 +26,7 @@
 	"ONLY_NAME":"Nombre",
 	"POINT_NULL":"The latitude and longitude must have a valid value to search by area",
 	"ONLY_NUMBERS":"Este campo solo acpeta numeros",
-	"ONLY_NUMBERS_POSITIVE":"This field only accept positive numbers"
+	"ONLY_NUMBERS_POSITIVE":"This field only accept positive numbers",
+	"10001":"Al menos, el nombre del buque o los datos del area (longitud, latitud y radio) han de ser rellenados para realizar la busqueda",
+	"10002":"Al menos hay un error de validación que necesita ser resuelto"
 }

@@ -36,6 +36,13 @@ angular.module("FormApp",[]).controller("FormCtrl",['$scope','$state','$statePar
 	$scope.launchSearch = function(){
 		if (!$scope.disableSearch){
 			alert("Start the search");
+		} else {
+			if (!fieldsFilled()){
+				$state.go('header.form.message',{code:'10001'});	
+			} else if (!validationErrors()){
+				$state.go('header.form.message',{code:'10002'});
+			}
+			
 		}
 	}
 
@@ -186,11 +193,17 @@ angular.module("FormApp",[]).controller("FormCtrl",['$scope','$state','$statePar
 		$scope.disableSearch = !enableSearch();
 	}
 
-	var enableSearch = function(){
-		return ((($scope.vesselForm.name) || 
-			   (($scope.vesselForm.area.radios) && ($scope.vesselForm.area.point.latitude) && ($scope.vesselForm.area.point.longitude))) &&
-		       (!$scope.validationNameError) && (!$scope.validationLatitudeError) && (!$scope.validationLongitudeError) && (!$scope.validationRadiosError)
+	var fieldsFilled = function () {
+		return (($scope.vesselForm.name) || 
+			   (($scope.vesselForm.area.radios) && ($scope.vesselForm.area.point.latitude) && ($scope.vesselForm.area.point.longitude)));
+	}
+
+	var validationErrors = function () {
+		return  (!$scope.validationNameError) && (!$scope.validationLatitudeError) && (!$scope.validationLongitudeError) && (!$scope.validationRadiosError)
 		       && (!$scope.validationWidth1Error) && (!$scope.validationWidth2Error) && (!$scope.validationlength1Error) && (!$scope.validationlength2Error)
-		       && (!$scope.validationDraft1Error) && (!$scope.validationDraft2Error));
+		       && (!$scope.validationDraft1Error) && (!$scope.validationDraft2Error);
+	}
+	var enableSearch = function(){
+		return fieldsFilled() && validationErrors();
 	}
 }]);
