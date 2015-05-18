@@ -16,7 +16,7 @@ angular.module('HarborApp').factory('HarborService',['$http','$q','$injector','p
 					params.total(data.length);
 					$defer.resolve(data.slice((params.page()-1)*params.count(),params.page()*params.count()));
 				}).error(function (error,status){
-					defer.reject(error,status);
+					$defer.reject(error,status);
 				});
 			}else{
 				params.total(0);

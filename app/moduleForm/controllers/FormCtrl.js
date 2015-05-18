@@ -1,4 +1,5 @@
-angular.module("FormApp",[]).controller("FormCtrl",['$scope','$state','$stateParams','$rootScope',function($scope,$state,$stateParams,$rootScope){
+angular.module("FormApp",[]).controller("FormCtrl",['$scope','$state','$stateParams','$rootScope','ngTableParams','SearchVesselService','$injector','profile',
+	function($scope,$state,$stateParams,$rootScope,ngTableParams,SearchVesselService,$injector,profile){
 	$scope.showDetail=true;
 	$scope.showBetweenDetails = {
 		width:false,
@@ -6,6 +7,7 @@ angular.module("FormApp",[]).controller("FormCtrl",['$scope','$state','$statePar
 		draft:false
 	};
 
+	$scope.service = new SearchVesselService();
 	$scope.disableSearch=true;
 	$scope.vesselForm={
 		name:null,
@@ -33,9 +35,16 @@ angular.module("FormApp",[]).controller("FormCtrl",['$scope','$state','$statePar
 		}
 	}
 
+	$scope.results=[];
+	$scope.tableResult=true;
+	$scope.loadingResult=false;
+
 	$scope.launchSearch = function(){
 		if (!$scope.disableSearch){
-			alert("Start the search");
+			$scope.tableResult=false;
+			$scope.loadingResult=true;
+			$scope.tableGrid.reload();
+			$state.go('header.form.result');
 		} else {
 			if (!fieldsFilled()){
 				$state.go('header.form.message',{code:'10001'});	
@@ -206,4 +215,25 @@ angular.module("FormApp",[]).controller("FormCtrl",['$scope','$state','$statePar
 	var enableSearch = function(){
 		return fieldsFilled() && validationErrors();
 	}
+
+	$scope.tableGrid = new ngTableParams({
+		page:1,
+		count:10
+	},{
+		total:$scope.results.length,
+		getData: function ($defer,params){
+			$scope.service.getVessels($scope.vesselForm,$defer,params).then(function(){
+				$scope.tableResult=true;
+				$scope.loadingResult=false;
+			},function(error,status){
+				var config = $injector.get(profile);
+				var code="";
+				if (config.httpError[status]){
+					$state.go('header.form.message',{code:config.httpError[status]});
+				} else {
+					$state.go('header.form.message',{code:config.httpError.default});
+				}
+			});
+		}
+	});
 }]);

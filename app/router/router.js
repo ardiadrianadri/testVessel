@@ -2,7 +2,7 @@ var router=angular.module("Router",["ui.router","ui.bootstrap","ngTable","Genera
 
 router.config(['$stateProvider','$urlRouterProvider',function($stateProvider,$urlRouterProvider){
 
-	$urlRouterProvider.otherwise("/header/form");
+	$urlRouterProvider.otherwise("/header/form/result");
 
 	$stateProvider.state('header',{
 		url:'/header',
@@ -38,5 +38,8 @@ router.config(['$stateProvider','$urlRouterProvider',function($stateProvider,$ur
 				$state.go("header.form.message",{code:error});
 			});
 		}]
+	}).state('header.form.result',{
+		url:'/result',
+		templateUrl:'app/moduleResults/templates/resultsTmp.html'
 	});
 }]);
