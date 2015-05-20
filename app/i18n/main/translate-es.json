@@ -24,10 +24,17 @@
 	"ONLY_SELECT":"Seleccionar",
 	"ONLY_CLOSE":"Cerrar",
 	"ONLY_NAME":"Nombre",
-	"POINT_NULL":"The latitude and longitude must have a valid value to search by area",
+	"POINT_NULL":"La longitud y la latitud deben de tener un valor valido para buscar por area",
 	"ONLY_NUMBERS":"Este campo solo acpeta numeros",
-	"ONLY_NUMBERS_POSITIVE":"This field only accept positive numbers",
+	"ONLY_NUMBERS_POSITIVE":"Este campo solo acepta numeros positivos",
 	"10001":"Al menos, el nombre del buque o los datos del area (longitud, latitud y radio) han de ser rellenados para realizar la busqueda",
 	"10002":"Al menos hay un error de validación que necesita ser resuelto",
-	"10003":"Error inexperado. Pongase en contacto con el administrador de sistemas"
+	"10003":"Error inexperado. Pongase en contacto con el administrador de sistemas",
+	"10404":"No se encuentra el servicio. Pongase en contacto con el administrador de sistemas",
+	"10004":"El nombre del buque es necesario para salvar los cambios",
+	"NEW_VESSEL":"Nuevo Buque",
+	"GENERAL_INFO":"Información general",
+	"GEOGRAPHICAL_INFO":"Información geográfica",
+	"REQUIRED_FIELD":"Los campos con (*) deben de ser cumplimentados",
+	"ACCEPT":"Aceptar"
 }

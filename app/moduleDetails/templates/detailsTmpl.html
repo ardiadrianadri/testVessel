@@ -1,20 +1,20 @@
 <div class="row">
 	<div class="col-md-12">
-		<h3>New Vessel</h3>
+		<h3>{{'NEW_VESSEL'|translate}}</h3>
 	</div>
 </div>
 <div class="well well-lag">
 	<div class="row">
 		<div class="col-md-12">
-			<h4>General information</h4>
+			<h4>{{'GENERAL_INFO'|translate}}</h4>
 		</div>
 	</div>
 	<div class="row">
 		<div class="col-md-6">
-			<label>Name:</label>
+			<label>{{'ONLY_NAME'|translate}}*:</label>
 		</div>
 		<div class="col-md-6">
-			<label>Width:</label>
+			<label>{{'WIDTH'|translate}}:</label>
 		</div>
 	</div>
 	<div class="row">
@@ -33,10 +33,10 @@
 	</div>
 	<div class="row">
 		<div class="col-md-6">
-			<label>Length:</label>
+			<label>{{'LENGTH'|translate}}:</label>
 		</div>
 		<div class="col-md-6">
-			<label>Draft:</label>
+			<label>{{'DRAFT'|translate}}:</label>
 		</div>
 	</div>
 	<div class="row">
@@ -57,15 +57,15 @@
 <div class="well well-lg">
 	<div class="row">
 		<div class="col-md-12">
-			<h4>Geographical information</h4>
+			<h4>{{'GEOGRAPHICAL_INFO'|translate}}</h4>
 		</div>
 	</div>
 	<div class="row">
 		<div class="col-md-6">
-			<label>Latitude:</label>
+			<label>{{'LATITUDE'|translate}}:</label>
 		</div>
 		<div class="col-md-6">
-			<label>Longitude:</label>
+			<label>{{'LONGITUDE'|translate}}:</label>
 		</div>
 	</div>
 	<div class="row">
@@ -84,8 +84,11 @@
 	</div>
 </div>
 <div class="row">
-	<div class="col-md-2 col-md-offset-10 personalButton">
-		<button class="btn btn-default" ng-click="cleanForm()">Clean</button>&nbsp;
-		<button class="btn" ng-class="{'btn-info':disableSearch,'btn-primary':!disableSearch}">Accept</button>
+	<div class="col-md-4">
+		<label class="requiredFields">{{'REQUIRED_FIELD'|translate}}</label>
+	</div>
+	<div class="col-md-2 col-md-offset-6 personalButton">
+		<button class="btn btn-default" ng-click="cleanForm()">{{'CLEAN'|translate}}</button>&nbsp;
+		<button class="btn" ng-class="{'btn-info':disableSearch,'btn-primary':!disableSearch}" ng-click="save()">{{'ACCEPT'|translate}}</button>
 	</div>
 </div>

@@ -8,31 +8,35 @@ angular.module("FormApp",[]).controller("FormCtrl",['$scope','$state','$statePar
 	};
 
 	$scope.service = new SearchVesselService();
-	$scope.disableSearch=true;
-	$scope.vesselForm={
-		name:null,
-		area:{
-			point:{
-				latitude:null,
-				longitude:null
+
+	if ($scope.cache.vesselForm){
+		$scope.vesselForm=$scope.cache.vesselForm;
+	} else {
+		$scope.vesselForm={
+			name:null,
+			area:{
+				point:{
+					latitude:null,
+					longitude:null
+				},
+				radius:null
 			},
-			radius:null
-		},
-		width:{
-			field1:null,
-			operator:"gte",
-			field2:null
-		},
-		length:{
-			field1:null,
-			operator:"gte",
-			field2:null
-		},
-		draft:{
-			field1:null,
-			operator:"gte",
-			field2:null
-		}
+			width:{
+				field1:null,
+				operator:"gte",
+				field2:null
+			},
+			length:{
+				field1:null,
+				operator:"gte",
+				field2:null
+			},
+			draft:{
+				field1:null,
+				operator:"gte",
+				field2:null
+			}
+		};
 	}
 
 	$scope.results=[];
@@ -47,9 +51,9 @@ angular.module("FormApp",[]).controller("FormCtrl",['$scope','$state','$statePar
 			$state.go('header.form.result');
 		} else {
 			if (!fieldsFilled()){
-				$state.go('header.form.message',{code:'10001'});	
+				$state.go('header.form.result.message',{code:'10001'});	
 			} else if (!validationErrors()){
-				$state.go('header.form.message',{code:'10002'});
+				$state.go('header.form.result.message',{code:'10002'});
 			}
 			
 		}
@@ -83,7 +87,7 @@ angular.module("FormApp",[]).controller("FormCtrl",['$scope','$state','$statePar
 	}
 
 	$scope.harborModal=function(){
-		$state.go("header.form.harbor");
+		$state.go("header.form.result.harbor");
 	}
 
 	$rootScope.$on('POINT_SELECTED',function(evt,point){
@@ -204,7 +208,7 @@ angular.module("FormApp",[]).controller("FormCtrl",['$scope','$state','$statePar
 
 	var fieldsFilled = function () {
 		return (($scope.vesselForm.name) || 
-			   (($scope.vesselForm.area.radios) && ($scope.vesselForm.area.point.latitude) && ($scope.vesselForm.area.point.longitude)));
+			   (($scope.vesselForm.area.radius) && ($scope.vesselForm.area.point.latitude) && ($scope.vesselForm.area.point.longitude)));
 	}
 
 	var validationErrors = function () {
@@ -222,18 +226,24 @@ angular.module("FormApp",[]).controller("FormCtrl",['$scope','$state','$statePar
 	},{
 		total:$scope.results.length,
 		getData: function ($defer,params){
-			$scope.service.getVessels($scope.vesselForm,$defer,params).then(function(){
+			$scope.service.getVessels($scope.vesselForm,$defer,params).then(function(data){
 				$scope.tableResult=true;
 				$scope.loadingResult=false;
 			},function(error,status){
 				var config = $injector.get(profile);
 				var code="";
 				if (config.httpError[status]){
-					$state.go('header.form.message',{code:config.httpError[status]});
+					$state.go('header.form.result.message',{code:config.httpError[status]});
 				} else {
-					$state.go('header.form.message',{code:config.httpError.default});
+					$state.go('header.form.result.message',{code:config.httpError.default});
 				}
 			});
 		}
+	});
+
+	$scope.disableSearch = !enableSearch();
+	
+	$scope.$on('$destroy',function(){
+		$scope.saveVesselForm($scope.vesselForm);
 	});
 }]);

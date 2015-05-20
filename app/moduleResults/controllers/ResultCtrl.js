@@ -18,9 +18,9 @@ angular.module('ResultApp',[]).controller('ResultCtrl',['$scope','$rootScope','$
 			},function(error){
 				var config = $injector.get(profile);
 				if (config.error){
-					$state.go('header.form.message',{code:config.error});
+					$state.go('header.form.result.message',{code:config.error});
 				} else {
-					$state.go('header.form.message',{code:config.default});
+					$state.go('header.form.result.message',{code:config.default});
 				}
 			})
 		});

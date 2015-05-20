@@ -13,10 +13,11 @@ function($scope,$state,SearchVesselService){
 
 		$scope.cleanForm=function(){
 			$scope.vessel=null;
+			$scope.disableSearch=buttonEnable();
 		}
 
 		$scope.validateName=function(name){
-			if (name && (name.length<=3)){
+			if (name && (name.length<3)){
 				$scope.validations.name="CHAR_MIN"
 			} else {
 				$scope.validations.name=null;
@@ -63,5 +64,13 @@ function($scope,$state,SearchVesselService){
 		}
 
 		$scope.disableSearch=buttonEnable();
+
+		$scope.save=function (){
+			if (checkForErrors() !== null){
+				$state.go('header.new.message',{code:'10002'});
+			} else if (isVesselEmpty()){
+				$state.go('header.new.message',{code:'10004'});
+			}
+		}
 
 }]);

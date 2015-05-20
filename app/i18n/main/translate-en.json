@@ -5,7 +5,6 @@
 	"ENG":"English",
 	"SEARCH":"Search vessels",
 	"CREATE":"New vessel",
-	"NAME":"Name",
 	"LATITUDE":"Latitude",
 	"LONGITUDE":"Longitude",
 	"SEARCH_DETAIL":"Search in detail",
@@ -29,5 +28,12 @@
 	"ONLY_NUMBERS_POSITIVE":"This field only accept positive numbers",
 	"10001":"At least, the name of the vessel or the data of the area (latitude, longitude and radius) have to be filled to do a search",
 	"10002":"At least, there is a validation error that need to be solved",
-	"10003":"An unexpected error has happened. Ask help to the system administrator"
+	"10003":"An unexpected error has happened. Ask help to the system administrator",
+	"10404":"The service can be found. Ask help to the system administrator",
+	"10004":"The name of the vessel is needed to save the changes",
+	"NEW_VESSEL":"New Vessel",
+	"GENERAL_INFO":"General information",
+	"GEOGRAPHICAL_INFO":"Geographical information",
+	"REQUIRED_FIELD":"The fields with (*) must be filled",
+	"ACCEPT":"Accept"
 }

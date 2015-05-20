@@ -8,12 +8,12 @@ router.config(['$stateProvider','$urlRouterProvider',function($stateProvider,$ur
 		url:'/header',
 		templateUrl:'app/moduleHeader/templates/headerTmpl.html',
 		controller:'HeaderCtrl',
-		abstract: true,
+		abstract: true
 	}).state('header.form',{
 		url:'/form',
 		templateUrl:'app/moduleForm/templates/formTmpl.html',
 		controller:'FormCtrl'
-	}).state('header.form.harbor',{
+	}).state('header.form.result.harbor',{
 		url:'/harbor',
 		onEnter:['$stateParams','$state','$modal','HarborService',function($stateParams,$state,$modal,HarborService){
 			$modal.open({
@@ -23,10 +23,10 @@ router.config(['$stateProvider','$urlRouterProvider',function($stateProvider,$ur
 			}).result.then(function(result){
 				$state.go(result)
 			},function(error){
-				$state.go("header.form.message",{code:error});
+				$state.go("header.form.result.message",{code:error});
 			});
 		}]
-	}).state('header.form.message',{
+	}).state('header.form.result.message',{
 		url:'/msg/:code',
 		onEnter:['$stateParams','$state','$modal',function($stateParams,$state,$modal){
 			$modal.open({
@@ -35,7 +35,7 @@ router.config(['$stateProvider','$urlRouterProvider',function($stateProvider,$ur
 			}).result.then(function(result){
 				$state.go(result);
 			},function(error){
-				$state.go("header.form.message",{code:error});
+				$state.go("header.form.result.message",{code:error});
 			});
 		}]
 	}).state('header.form.result',{
@@ -46,5 +46,17 @@ router.config(['$stateProvider','$urlRouterProvider',function($stateProvider,$ur
 		url:'/new',
 		templateUrl:'app/moduleDetails/templates/detailsTmpl.html',
 		controller:'DetailsCtrl'
+	}).state('header.new.message',{
+		url:'/msg/:code',
+		onEnter:['$stateParams','$state','$modal',function($stateParams,$state,$modal){
+			$modal.open({
+				templateUrl:"app/moduleUtils/templates/messageTmpl.html",
+				controller:"MessageCtrl"
+			}).result.then(function(result){
+				$state.go(result);
+			},function(error){
+				$state.go("header.new.message",{code:error});
+			});
+		}]
 	});
 }]);

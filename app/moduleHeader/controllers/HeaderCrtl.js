@@ -3,6 +3,7 @@ var moduleHeader=angular.module('ModuleHeader',[]);
 moduleHeader.controller('HeaderCtrl',['$scope','$translate','$injector','profile','$filter','$rootScope','$state',
 	function($scope,$translate,$injector,profile,$filter,$rootScope,$state){
 
+    $scope.cache={};
 	if ($state.current.name === "header.form.result"){
 		$scope.clickedSearch=true;
 		$scope.clickedNew=false;	
@@ -47,4 +48,12 @@ moduleHeader.controller('HeaderCtrl',['$scope','$translate','$injector','profile
 			console.error(JSON.stringify(error));
 		});
 	});
+
+	$scope.saveVesselForm = function (vesselForm){
+		$scope.cache.vesselForm=vesselForm;
+	}
+
+	// $scope.saveSearchResult = function(searchResult){
+	// 	$scope.cache.vesselResult=searchResult;
+	// }
 }]);
