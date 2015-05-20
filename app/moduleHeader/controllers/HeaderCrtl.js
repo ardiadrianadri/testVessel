@@ -1,9 +1,16 @@
 var moduleHeader=angular.module('ModuleHeader',[]);
 
-moduleHeader.controller('HeaderCtrl',['$scope','$translate','$injector','profile','$filter','$rootScope',
-	function($scope,$translate,$injector,profile,$filter,$rootScope){
-	$scope.clickedSearch=true;
-	$scope.clickedNew=false;
+moduleHeader.controller('HeaderCtrl',['$scope','$translate','$injector','profile','$filter','$rootScope','$state',
+	function($scope,$translate,$injector,profile,$filter,$rootScope,$state){
+
+	if ($state.current.name === "header.form.result"){
+		$scope.clickedSearch=true;
+		$scope.clickedNew=false;	
+	} else {
+		$scope.clickedSearch=false;
+		$scope.clickedNew=true;
+	}	
+	
 	$scope.langs=[
 		{code:"es",field:$filter('translate')("SPN")},
 		{code:"en",field:$filter('translate')("ENG")}
@@ -11,16 +18,18 @@ moduleHeader.controller('HeaderCtrl',['$scope','$translate','$injector','profile
 	$scope.lng=$scope.langs[1];
 	var config = $injector.get(profile);
 	$scope.clickSearch=function (){
-		//TODO Hay que añadir la navegación al estado de búsqueda siempre y cuando el estado actual
-		//sea diferente de Result
-		$scope.clickedSearch=true;
-		$scope.clickedNew=false;
+		if (!$scope.clickedSearch){
+			$scope.clickedSearch=true;
+			$scope.clickedNew=false;
+			$state.go('header.form.result');
+		}
 	};
 	$scope.clickNew=function (){
-		//TODO Hay que añadir la navegacion al estado de details siempre y cuando el estado acutal
-		//sea diferente de Detail
-		$scope.clickedNew=true;
-		$scope.clickedSearch=false;
+		if ($scope.clickedSearch){
+			$scope.clickedNew=true;
+			$scope.clickedSearch=false;
+			$state.go('header.new');
+		}
 	};
 
 	$scope.changeLang=function(){

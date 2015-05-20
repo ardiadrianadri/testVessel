@@ -1,4 +1,4 @@
-var router=angular.module("Router",["ui.router","ui.bootstrap","ngTable","GeneralConfig","ModuleHeader","FormApp","HarborApp","MessageApp","ResultApp"]);
+var router=angular.module("Router",["ui.router","ui.bootstrap","ngTable","GeneralConfig","ModuleHeader","FormApp","HarborApp","MessageApp","ResultApp","DetailsApp"]);
 
 router.config(['$stateProvider','$urlRouterProvider',function($stateProvider,$urlRouterProvider){
 
@@ -42,5 +42,9 @@ router.config(['$stateProvider','$urlRouterProvider',function($stateProvider,$ur
 		url:'/result',
 		templateUrl:'app/moduleResults/templates/resultsTmp.html',
 		controller:'ResultCtrl'
+	}).state('header.new',{
+		url:'/new',
+		templateUrl:'app/moduleDetails/templates/detailsTmpl.html',
+		controller:'DetailsCtrl'
 	});
 }]);

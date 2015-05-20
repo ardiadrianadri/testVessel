@@ -1,0 +1,91 @@
+<div class="row">
+	<div class="col-md-12">
+		<h3>New Vessel</h3>
+	</div>
+</div>
+<div class="well well-lag">
+	<div class="row">
+		<div class="col-md-12">
+			<h4>General information</h4>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-6">
+			<label>Name:</label>
+		</div>
+		<div class="col-md-6">
+			<label>Width:</label>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-6">
+			<input type="text" class="form-control" ng-blur="validateName(vessel.name)" ng-model="vessel.name"/>
+			<div ng-if="validations.name">
+				<label class="label label-danger">{{validations.name|translate}}</label>
+			</div>
+		</div>
+		<div class="col-md-6">
+			<input type="text" class="form-control" ng-blur="validatePositiveNumber(vessel.width,'width')" ng-model="vessel.width"/>
+			<div ng-if="validations.width">
+				<label class="label label-danger">{{validations.width|translate}}</label>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-6">
+			<label>Length:</label>
+		</div>
+		<div class="col-md-6">
+			<label>Draft:</label>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-6">
+			<input type="text" class="form-control" ng-blur="validatePositiveNumber(vessel.length,'length')" ng-model="vessel.length"/>
+			<div ng-if="validations.length">
+				<label class="label label-danger">{{validations.length|translate}}</label>
+			</div>
+		</div>
+		<div class="col-md-6">
+			<input type="text" class="form-control" ng-blur="validatePositiveNumber(vessel.draft,'draft')" ng-model="vessel.draft"/>
+			<div ng-if="validations.draft">
+				<label class="label label-danger">{{validations.draft|translate}}</label>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="well well-lg">
+	<div class="row">
+		<div class="col-md-12">
+			<h4>Geographical information</h4>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-6">
+			<label>Latitude:</label>
+		</div>
+		<div class="col-md-6">
+			<label>Longitude:</label>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-6">
+			<input type="text" class="form-control" ng-blur="validateNumber(vessel.latitude,'latitude')" ng-model="vessel.latitude"/>
+			<div ng-if="validations.latitude">
+				<label class="label label-danger">{{validations.latitude|translate}}</label>
+			</div>
+		</div>
+		<div class="col-md-6">
+			<input type="text" class="form-control" ng-blur="validateNumber(vessel.longitude,'longitude')" ng-model="vessel.longitude"/>
+			<div ng-if="validations.longitude">
+				<label class="label label-danger">{{validations.longitude|translate}}</label>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-2 col-md-offset-10 personalButton">
+		<button class="btn btn-default" ng-click="cleanForm()">Clean</button>&nbsp;
+		<button class="btn" ng-class="{'btn-info':disableSearch,'btn-primary':!disableSearch}">Accept</button>
+	</div>
+</div>
