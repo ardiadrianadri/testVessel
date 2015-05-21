@@ -1,6 +1,6 @@
 <div class="row">
 	<div class="col-md-12">
-		<h3>{{'NEW_VESSEL'|translate}}</h3>
+		<h3>{{title|translate}}</h3>
 	</div>
 </div>
 <div class="well well-lag">
@@ -70,13 +70,13 @@
 	</div>
 	<div class="row">
 		<div class="col-md-6">
-			<input type="text" class="form-control" ng-blur="validateNumber(vessel.latitude,'latitude')" ng-model="vessel.latitude"/>
+			<input type="text" class="form-control" ng-blur="validateNumber(vessel.point.latitude,'latitude')" ng-model="vessel.point.latitude"/>
 			<div ng-if="validations.latitude">
 				<label class="label label-danger">{{validations.latitude|translate}}</label>
 			</div>
 		</div>
 		<div class="col-md-6">
-			<input type="text" class="form-control" ng-blur="validateNumber(vessel.longitude,'longitude')" ng-model="vessel.longitude"/>
+			<input type="text" class="form-control" ng-blur="validateNumber(vessel.point.longitude,'longitude')" ng-model="vessel.point.longitude"/>
 			<div ng-if="validations.longitude">
 				<label class="label label-danger">{{validations.longitude|translate}}</label>
 			</div>

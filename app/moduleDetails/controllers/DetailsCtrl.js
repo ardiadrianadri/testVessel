@@ -11,6 +11,23 @@ function($scope,$state,SearchVesselService){
 			longitude:null
 		}
 
+		if ($scope.cache.vesselSelected){
+			$scope.title="UPDATE_VESSEL";
+			$scope.vessel=$scope.cache.vesselSelected;
+		} else {
+			$scope.title="NEW_VESSEL";
+			$scope.vessel={
+				name:null,
+				width:null,
+				length:null,
+				draft:null,
+				point:{
+					latitude:null,
+					longitude:null
+				}
+			};
+		}
+
 		$scope.cleanForm=function(){
 			$scope.vessel=null;
 			$scope.disableSearch=buttonEnable();

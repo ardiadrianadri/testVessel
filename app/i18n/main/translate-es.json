@@ -36,5 +36,6 @@
 	"GENERAL_INFO":"Información general",
 	"GEOGRAPHICAL_INFO":"Información geográfica",
 	"REQUIRED_FIELD":"Los campos con (*) deben de ser cumplimentados",
-	"ACCEPT":"Aceptar"
+	"ACCEPT":"Aceptar",
+	"UPDATE_VESSEL":"Información del buque"
 }

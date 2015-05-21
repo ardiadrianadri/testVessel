@@ -24,4 +24,10 @@ angular.module('ResultApp',[]).controller('ResultCtrl',['$scope','$rootScope','$
 				}
 			})
 		});
+
+		$scope.selectTable = function (vessel){
+			$scope.saveVesselSelected(vessel);
+			$state.go('header.new');
+		};
+		
 	}]);

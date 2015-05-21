@@ -35,5 +35,6 @@
 	"GENERAL_INFO":"General information",
 	"GEOGRAPHICAL_INFO":"Geographical information",
 	"REQUIRED_FIELD":"The fields with (*) must be filled",
-	"ACCEPT":"Accept"
+	"ACCEPT":"Accept",
+	"UPDATE_VESSEL":"Vessel's information"
 }

@@ -29,6 +29,7 @@ moduleHeader.controller('HeaderCtrl',['$scope','$translate','$injector','profile
 		if ($scope.clickedSearch){
 			$scope.clickedNew=true;
 			$scope.clickedSearch=false;
+			$scope.cache.vesselSelected=null;
 			$state.go('header.new');
 		}
 	};
@@ -53,7 +54,9 @@ moduleHeader.controller('HeaderCtrl',['$scope','$translate','$injector','profile
 		$scope.cache.vesselForm=vesselForm;
 	}
 
-	// $scope.saveSearchResult = function(searchResult){
-	// 	$scope.cache.vesselResult=searchResult;
-	// }
+	$scope.saveVesselSelected = function (vessel){
+		$scope.cache.vesselSelected=vessel;
+		$scope.clickedNew=true;
+		$scope.clickedSearch=false;
+	}
 }]);
