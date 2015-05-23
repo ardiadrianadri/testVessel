@@ -11,7 +11,7 @@ generalConfig.config(["$translateProvider","$translatePartialLoaderProvider","$i
 		$translateProvider.useSanitizeValueStrategy('escaped');
 }]);
 
-generalConfig.constant("profile","generalDEV");
+generalConfig.constant("profile","localDEV");
 
 generalConfig.constant("generalDEV",{
 	"languageDefault":"en",
@@ -53,6 +53,56 @@ generalConfig.constant("generalDEV",{
 	},
 	"httpError":{
 		"404":"10404",
-		"default":"10003"
+		"default":"10003",
+		"00000":"00000"
+	}
+});
+
+generalConfig.constant("localDEV",{
+	"languageDefault":"en",
+	"harborRest":{
+		"url":"http://localhost/testVesselBack-0.0.1-SNAPSHOT/harbors/search/findByNameContaining",
+		"params":{
+			"name":"name=",
+			"page":"page=",
+			"size":"size="
+		}
+	},
+	"vesselRest":{
+		"url":"app/moduleResults/mocks/vessel.json",
+		"params":{
+				"name":"name=",
+				"width":"width=",
+				"length":"length=",
+				"draft":"draft=",
+				"latitutde":"latitutde=",
+				"longitude":"longitude=",
+				"radius":"radius=",
+				"width2":"width2=",
+				"length2":"length2=",
+				"draft2":"draft2="},
+		"width":{
+			"gte":"",
+			"gt":"",
+			"lt":"",
+			"lte":""
+		},
+		"length":{
+			"gte":"",
+			"gt":"",
+			"lt":"",
+			"lte":""
+		},
+		"draft":{
+			"gte":"",
+			"gt":"",
+			"lt":"",
+			"lte":""
+		}
+	},
+	"httpError":{
+		"404":"10404",
+		"default":"10003",
+		"noResults":"00000"
 	}
 });

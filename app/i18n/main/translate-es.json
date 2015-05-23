@@ -37,5 +37,6 @@
 	"GEOGRAPHICAL_INFO":"Información geográfica",
 	"REQUIRED_FIELD":"Los campos con (*) deben de ser cumplimentados",
 	"ACCEPT":"Aceptar",
-	"UPDATE_VESSEL":"Información del buque"
+	"UPDATE_VESSEL":"Información del buque",
+	"00000":"No se han encontrado datos"
 }

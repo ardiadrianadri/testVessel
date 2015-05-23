@@ -1,5 +1,5 @@
-angular.module('HarborApp',[]).controller('HarborCtrl',['$scope','HarborService','ngTableParams','$rootScope','$translate','$filter',
-	function($scope,HarborService,ngTableParams,$rootScope,$translate,$filter){
+angular.module('HarborApp',[]).controller('HarborCtrl',['$scope','HarborService','ngTableParams','$rootScope','$translate','$filter','$injector','profile',
+	function($scope,HarborService,ngTableParams,$rootScope,$translate,$filter,$injector,profile){
 	
 	$scope.data=[];
 	$scope.service = new HarborService();
@@ -37,8 +37,16 @@ angular.module('HarborApp',[]).controller('HarborCtrl',['$scope','HarborService'
 			$scope.service.getHarborData($scope.hardBoardName,$defer,params).then(function(){
 				$scope.gotData=true;
 				$scope.loading=false;
-			},function(){
-				//TODO Aqui habra que poner la logica de fallo cuando tengamos la ventana de mensajes
+			},function(error,status){
+				var config=$injector.get(profile);
+				console.error($filter("translate")(error));
+				if (config.httpError[status]){
+					$scope.$dismiss(config.httpError[status]);
+				} else if (error === config.httpError.noResults){
+					$scope.$dismiss(config.httpError.noResults);
+				} else {
+					$scope.$dismiss(config.httpError.default);
+				}
 			});
 
 		}
