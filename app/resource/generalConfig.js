@@ -54,7 +54,8 @@ generalConfig.constant("generalDEV",{
 	"httpError":{
 		"404":"10404",
 		"default":"10003",
-		"00000":"00000"
+		"00000":"00000",
+		"vesselEmpty":"10004"
 	}
 });
 
@@ -69,40 +70,43 @@ generalConfig.constant("localDEV",{
 		}
 	},
 	"vesselRest":{
-		"url":"app/moduleResults/mocks/vessel.json",
+		"url":"http://localhost/testVesselBack-0.0.1-SNAPSHOT/vessels/search/findBy",
 		"params":{
-				"name":"name=",
+				"point":"point=",
+				"distance":"distance=",
 				"width":"width=",
+				"widthFrom":"widthFrom=",
+				"widthTo":"widthTo=",
 				"length":"length=",
+				"lengthFrom":"lengthFrom=",
+				"lengthTo":"lengthTo=",
 				"draft":"draft=",
-				"latitutde":"latitutde=",
-				"longitude":"longitude=",
-				"radius":"radius=",
-				"width2":"width2=",
-				"length2":"length2=",
-				"draft2":"draft2="},
-		"width":{
-			"gte":"",
-			"gt":"",
-			"lt":"",
-			"lte":""
-		},
-		"length":{
-			"gte":"",
-			"gt":"",
-			"lt":"",
-			"lte":""
-		},
-		"draft":{
-			"gte":"",
-			"gt":"",
-			"lt":"",
-			"lte":""
-		}
+				"draftFrom":"draftFrom=",
+				"draftTo":"draftTo=",
+				"name":"name=",
+				"page":"page=",
+				"size":"size="
+			},
+		"point":"PointNear",
+		"name":"NameContaining",
+		"width":"Width",
+		"length":"Length",
+		"draft":"Draft",
+		"gte":"GreaterThanEqual",
+		"gt":"GreaterThan",
+		"lt":"LessThan",
+		"lte":"LessThanEqual",
+		"btw":"Between",
+		"and":"And"
+	},
+	"vesselRestNew":{
+		"url":"http://localhost/testVesselBack-0.0.1-SNAPSHOT/vessels"
 	},
 	"httpError":{
 		"404":"10404",
 		"default":"10003",
-		"noResults":"00000"
+		"noResults":"00000",
+		"vesselEmpty":"10004",
+		"OK":"10005"
 	}
 });

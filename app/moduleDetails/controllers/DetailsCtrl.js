@@ -22,8 +22,8 @@ function($scope,$state,SearchVesselService){
 				length:null,
 				draft:null,
 				point:{
-					latitude:null,
-					longitude:null
+					x:null,
+					y:null
 				}
 			};
 		}
@@ -43,7 +43,8 @@ function($scope,$state,SearchVesselService){
 		}
 
 		 $scope.validatePositiveNumber=function(value,field){
-		 	if (value && (!value.match(/^[0-9]{1,9}(?:\.[0-9]{1,2})?$/))){
+		 	
+		 	if (value && (!value.match(/^[0-9]{1,9}(?:\.[0-9]{1,9})?$/))){
  				$scope.validations[field]="ONLY_NUMBERS_POSITIVE";
  			} else {
  				$scope.validations[field]=null;
@@ -53,7 +54,8 @@ function($scope,$state,SearchVesselService){
 		 }
 
 		 $scope.validateNumber = function(value,field){
-		 	if (value && (!value.match(/^[+-]?[0-9]{1,9}(?:\.[0-9]{1,2})?$/))){
+		 	
+		 	if (value && (!value.match(/^[+-]?[0-9]{1,9}(?:\.[0-9]{1,9})?$/))){
 		 		$scope.validations[field]="ONLY_NUMBERS";
 		 	} else {
 		 		$scope.validations[field]=null;
@@ -87,6 +89,16 @@ function($scope,$state,SearchVesselService){
 				$state.go('header.new.message',{code:'10002'});
 			} else if (isVesselEmpty()){
 				$state.go('header.new.message',{code:'10004'});
+			} else {
+				// $scope.service.newVessel($scope.vessel).finally(function(data){
+				// 	$state.go('header.new.message',{code:data});
+				// });
+
+				$scope.service.newVessel($scope.vessel).then(function(data){
+					$state.go('header.new.message',{code:data});
+				},function(error){
+					$state.go('header.new.message',{code:error});
+				});
 			}
 		}
 

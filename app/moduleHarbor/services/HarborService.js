@@ -10,7 +10,7 @@ angular.module('HarborApp').factory('HarborService',['$http','$q','$injector','p
 				var finalUrl = config.harborRest.url+
 				               ((config.harborRest.url.indexOf('?')<0)?'?':'&')+
 				               config.harborRest.params.name+name+'&'+
-				               config.harborRest.params.page+params.page()+'&'+
+				               config.harborRest.params.page+(params.page()-1)+'&'+
 				               config.harborRest.params.size+params.count();
 	
 				$http.get(finalUrl).success(function(data){

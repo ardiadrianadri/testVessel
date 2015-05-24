@@ -47,6 +47,8 @@ angular.module('HarborApp',[]).controller('HarborCtrl',['$scope','HarborService'
 				} else {
 					$scope.$dismiss(config.httpError.default);
 				}
+				$scope.gotData=true;
+				$scope.loading=false;
 			});
 
 		}

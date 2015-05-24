@@ -32,6 +32,7 @@
 	"10003":"Error inexperado. Pongase en contacto con el administrador de sistemas",
 	"10404":"No se encuentra el servicio. Pongase en contacto con el administrador de sistemas",
 	"10004":"El nombre del buque es necesario para salvar los cambios",
+	"10005":"El nuevo buque ha sido guardado con éxito",
 	"NEW_VESSEL":"Nuevo Buque",
 	"GENERAL_INFO":"Información general",
 	"GEOGRAPHICAL_INFO":"Información geográfica",

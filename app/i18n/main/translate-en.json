@@ -31,6 +31,7 @@
 	"10003":"An unexpected error has happened. Ask help to the system administrator",
 	"10404":"The service can be found. Ask help to the system administrator",
 	"10004":"The name of the vessel is needed to save the changes",
+	"10005":"The vessel has been saved with success",
 	"NEW_VESSEL":"New Vessel",
 	"GENERAL_INFO":"General information",
 	"GEOGRAPHICAL_INFO":"Geographical information",

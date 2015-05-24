@@ -21,13 +21,13 @@
 			</div>
 		</div>
 		<div class="col-md-3">
-			<input type="text" class="form-control" ng-blur="validateLatitude()" ng-model="vesselForm.area.point.latitude"/>
+			<input type="text" class="form-control" ng-blur="validateLatitude()" ng-model="vesselForm.area.point.y"/>
 			<div ng-if="validationLatitudeError">
 				<label class="label label-danger">{{validationLatitudeMessage|translate}}</label>
 			</div>
 		</div>
 		<div class="col-md-3">
-			<input type="text" class="form-control" ng-blur="validateLongitude()" ng-model="vesselForm.area.point.longitude"/>
+			<input type="text" class="form-control" ng-blur="validateLongitude()" ng-model="vesselForm.area.point.x"/>
 			<div ng-if="validationLongitudeError">
 				<label class="label label-danger">{{validationLongitudeMessage|translate}}</label>
 			</div>

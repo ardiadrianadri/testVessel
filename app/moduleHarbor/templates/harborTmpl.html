@@ -35,8 +35,8 @@
       <table ng-table="tableParams" class="table table-bordered">
         <tr ng-repeat="harbor in $data">
           <td data-title="name">{{harbor.name}}</td>
-          <td data-title="latitude">{{harbor.point.y | number}}</td>
-          <td data-title="longitude">{{harbor.point.x | number}}</td>
+          <td data-title="latitude">{{harbor.point.y}}</td>
+          <td data-title="longitude">{{harbor.point.x}}</td>
           <td data-title=""><button class="btn btn-primary" ng-click="select(harbor)">{{"ONLY_SELECT"|translate}}</button></td>
         </tr>
       </table>

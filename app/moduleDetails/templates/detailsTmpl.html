@@ -70,13 +70,13 @@
 	</div>
 	<div class="row">
 		<div class="col-md-6">
-			<input type="text" class="form-control" ng-blur="validateNumber(vessel.point.latitude,'latitude')" ng-model="vessel.point.latitude"/>
+			<input type="text" class="form-control" ng-blur="validateNumber(vessel.point.y,'latitude')" ng-model="vessel.point.y"/>
 			<div ng-if="validations.latitude">
 				<label class="label label-danger">{{validations.latitude|translate}}</label>
 			</div>
 		</div>
 		<div class="col-md-6">
-			<input type="text" class="form-control" ng-blur="validateNumber(vessel.point.longitude,'longitude')" ng-model="vessel.point.longitude"/>
+			<input type="text" class="form-control" ng-blur="validateNumber(vessel.point.x,'longitude')" ng-model="vessel.point.x"/>
 			<div ng-if="validations.longitude">
 				<label class="label label-danger">{{validations.longitude|translate}}</label>
 			</div>
