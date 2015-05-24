@@ -30,7 +30,10 @@ angular.module('HarborApp',[]).controller('HarborCtrl',['$scope','HarborService'
 
 	$scope.tableParams = new ngTableParams({
 		page:1,
-		count:5
+		count:5,
+		sorting:{
+			name:'asc'
+		}
 	},{
 		total: $scope.data.length,
 		getData: function ($defer,params){

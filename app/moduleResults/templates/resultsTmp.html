@@ -2,10 +2,10 @@
 	<div class="col-md-12">
 		<table ng-table="tableGrid" class="table table-bordered">
 			<tr ng-repeat="vessel in $data track by $index">
-				<td data-title="vesselName">{{vessel.name}}</td>
-				<td data-title="vesselWidth">{{vessel.width}}</td>
-				<td data-title="vesselLength">{{vessel.length}}</td>
-				<td data-title="vesselDraft">{{vessel.draft}}</td>
+				<td data-title="vesselName" sortable="'name'">{{vessel.name}}</td>
+				<td data-title="vesselWidth" sortable="'width'">{{vessel.width}}</td>
+				<td data-title="vesselLength" sortable="'length'">{{vessel.length}}</td>
+				<td data-title="vesselDraft" sortable="'draft'">{{vessel.draft}}</td>
 				<td data-title="vesselLatitude">{{vessel.point.y}}</td>
 				<td data-title="vesselLongitude">{{vessel.point.x}}</td>
 				<td data-title=""><button class="btn btn-primary" ng-click="selectTable(vessel)">{{"ONLY_SELECT"|translate}}</button></td>

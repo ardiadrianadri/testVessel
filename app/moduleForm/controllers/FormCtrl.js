@@ -224,7 +224,10 @@ angular.module("FormApp",[]).controller("FormCtrl",['$scope','$state','$statePar
 
 	$scope.tableGrid = new ngTableParams({
 		page:1,
-		count:10
+		count:10,
+		sorting:{
+			name:'asc'
+		}
 	},{
 		total:$scope.results.length,
 		getData: function ($defer,params){

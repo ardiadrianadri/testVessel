@@ -66,7 +66,8 @@ generalConfig.constant("localDEV",{
 		"params":{
 			"name":"name=",
 			"page":"page=",
-			"size":"size="
+			"size":"size=",
+			"sort":"sort="
 		}
 	},
 	"vesselRest":{
@@ -85,7 +86,8 @@ generalConfig.constant("localDEV",{
 				"draftTo":"draftTo=",
 				"name":"name=",
 				"page":"page=",
-				"size":"size="
+				"size":"size=",
+				"sort":"sort="
 			},
 		"point":"PointNear",
 		"name":"NameContaining",

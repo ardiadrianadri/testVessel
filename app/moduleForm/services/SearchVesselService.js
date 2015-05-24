@@ -61,9 +61,19 @@ angular.module('FormApp').factory('SearchVesselService',['$http','$injector','pr
 		this.getVessels = function (vessel,$defer,params){
 			if ((vessel) && (!isVesselEmpty(vessel))) {
 				var config = $injector.get(profile);
+				var sortObject = params.sorting();
+				var sortQuery = null;
+				
+				for (var k in sortObject){
+					sortQuery=config.vesselRest.params.sort+k+","+sortObject[k];
+				}
 				
 				var url = generateUrl(vessel,config)
 				url=url+config.vesselRest.params.page+(params.page()-1)+"&"+config.vesselRest.params.size+params.count();
+
+				if (sortQuery !== null){
+					url = url+"&"+sortQuery;
+				}
 
 				$http.get(url).success(function(data){
 					params.total(data.page.totalElements);
