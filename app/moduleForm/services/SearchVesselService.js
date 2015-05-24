@@ -102,16 +102,28 @@ angular.module('FormApp').factory('SearchVesselService',['$http','$injector','pr
 					}
 				};
 
-				$http.post(config.vesselRestNew.url,vesselEntity).success(function(){
-					defer.resolve(config.httpError.OK);
-				},function(error,status){
-					if (config.httpError[status]){
-						defer.reject(status);	
-					} else {
-						defer.reject(config.httpError.default);
-					}
-					
-				})
+				if (vessel._links){
+					$http.put(vessel._links.self.href,vesselEntity).success(function(){
+						defer.resolve(config.httpError.OK);
+					},function(error,status){
+						if (config.httpError[status]){
+							defer.reject(status);
+						} else {
+							defer.reject(config.httpError.default);
+						}
+					});
+				} else {
+					$http.post(config.vesselRestNew.url,vesselEntity).success(function(){
+						defer.resolve(config.httpError.OK);
+					},function(error,status){
+						if (config.httpError[status]){
+							defer.reject(status);	
+						} else {
+							defer.reject(config.httpError.default);
+						}
+						
+					});
+				}
 			} else {
 				defer.reject(config.httpError.vesselEmpty);
 			}
