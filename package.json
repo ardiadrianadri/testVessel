@@ -21,5 +21,10 @@
   "license": "BSD-2-Clause",
   "bugs": {
     "url": "https://github.com/ardiadrianadri/testVessel/issues"
+  },
+  "devDependencies": {
+    "gulp-karma": "0.0.5",
+    "karma": "^0.13.19",
+    "karma-cli": "^0.1.2"
   }
 }
